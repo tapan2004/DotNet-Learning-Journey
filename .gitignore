@@ -1,0 +1,39 @@
+
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Visual Studio Code (optional local settings)
+.vscode/
+
+# JetBrains Rider
+.idea/
+
+# User-specific files
+*.rsuser
+*.sln.docstates
+
+# NuGet packages
+*.nupkg
+*.snupkg
+
+# Test results and coverage
+TestResults/
+coverage/
+coverage.*
+
+# Logs
+*.log
+
+# Environment variables and secrets
+.env
+.env.*
+
+# OS-generated files
+.DS_Store
+Thumbs.db
