@@ -14,6 +14,11 @@ namespace ProductApi.Controllers
 
         private readonly IProductServices productServices;
 
+        public ProductController(IProductServices productServices)
+        {
+            this.productServices = productServices;
+        }
+
         [HttpGet("{Id}")]
         public ActionResult<Product> GetById(int Id)
         {
@@ -28,7 +33,7 @@ namespace ProductApi.Controllers
         [HttpGet]
         public ActionResult<List<Product>> GetAll()
         {
-            return Ok(productServices.GetAll);
+            return Ok(productServices.GetAll());
         }
 
         [HttpPost]
