@@ -51,7 +51,13 @@ namespace ProductApi.Services
 
         public bool delete(int Id)
         {
-            throw new NotImplementedException();
+            var product=GetById(Id);
+            if(product is null)
+            {
+                return false;
+            }
+            products.Remove(product);
+            return true;
         }
     }
 }
