@@ -14,7 +14,7 @@ namespace ProductApiWithDb.Services
             return await _productsRepository.AddProduct(product);
         }
 
-        public async Task<Product> deleteProduct(int id)
+        public async Task<Product?> deleteProduct(int id)
         {
             return await _productsRepository.deleteProduct(id);
         }
@@ -24,23 +24,19 @@ namespace ProductApiWithDb.Services
             return await _productsRepository.getAllProducts();
         }
 
-        public async Task<Product> getProductById(int id)
+        public async Task<Product?> getProductById(int id)
         {
             return await _productsRepository.getProductById(id);
         }
 
-        public Task patchProduct(int id, Product product)
-        {
-            if (id != product.Id)
-            {
-                throw new ArgumentException("Product ID mismatch");
-            }
-            return _productsRepository.updateProduct(product);
-        }
-
-        public async Task<Product> updateProduct(Product product)
+        public async Task<Product?> updateProduct(Product product)
         {
             return await _productsRepository.updateProduct(product);
+        }
+
+        Task<Product?> IProductsServices.patchProduct(int id, Product product)
+        {
+            throw new NotImplementedException();
         }
     }
 }
