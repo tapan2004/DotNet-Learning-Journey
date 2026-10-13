@@ -1,6 +1,5 @@
-namespace ProductApi.Models
+namespace ProductApiWithDb.Models
 {
-    
     public class Product
     {
         public int Id { get; set; }
