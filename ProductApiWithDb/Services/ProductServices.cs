@@ -34,9 +34,30 @@ namespace ProductApiWithDb.Services
             return await _productsRepository.updateProduct(product);
         }
 
-        Task<Product?> IProductsServices.patchProduct(int id, Product product)
+        public async Task<Product?> patchProduct(int id, Product product)
         {
-            throw new NotImplementedException();
+            var existingProduct = await _productsRepository.getProductById(id);
+            if (existingProduct == null)
+            {
+                return null;
+            }
+
+            if (!string.IsNullOrWhiteSpace(product.Name))
+            {
+                existingProduct.Name = product.Name;
+            }
+
+            if (product.Price > 0)
+            {
+                existingProduct.Price = product.Price;
+            }
+
+            if (!string.IsNullOrWhiteSpace(product.Description))
+            {
+                existingProduct.Description = product.Description;
+            }
+
+            return await _productsRepository.updateProduct(existingProduct);
         }
     }
 }

@@ -70,6 +70,10 @@ namespace ProductApiWithDb.Controllers
         public async Task<ActionResult<Product>> PatchProduct(int id, Product product)
         {
             var patchedProduct = await _productsServices.patchProduct(id, product);
+            if (patchedProduct == null)
+            {
+                return NotFound();
+            }
             return Ok(patchedProduct);
         }
     }
